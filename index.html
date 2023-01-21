@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg" href="colorbox.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>color-box : jgleman.com</title>
+    <script type="module" src="/src/ts/main.tsx" async></script>
+    <script src="prism.js" defer></script>
+    <link href="prism.css" rel="stylesheet" type="text/css" />
+    <link href="/src/css/index.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <header
+      class="flex w-full flex-col items-center justify-center bg-teal-400 py-4"
+    >
+      <div class="mx-2 mt-4 flex items-end gap-2">
+        <h1 class="w-full">
+          <img
+            alt="color-box"
+            src="colorbox-logo.svg"
+            class="max-h-[50px] w-auto"
+            width="auto"
+            height="30"
+          />
+        </h1>
+      </div>
+      <p class="my-4 text-lg text-teal-800">
+        A Modern JavaScript Color Library
+      </p>
+      <p class="mx-2 text-center">
+        <strong>color-box</strong> is a set of functions that makes manipulating
+        colors using JavaScript or TypeScript easy.
+      </p>
+      <p
+        class="mx-auto flex w-full flex-col items-center justify-center gap-6 py-4 sm:flex-row"
+      >
+        <a
+          class="flex items-center gap-1 rounded border border-black/75 py-1.5 px-3 text-black opacity-75 transition-all hover:bg-teal-500/75 hover:opacity-100"
+          href="https://github.com/jgleman/color-box"
+        >
+          <img class="h-4 w-4" src="github-mark.svg" width="20" height="20" />
+          color-box on GitHub</a
+        >
+        <a
+          class="flex items-center gap-1 rounded border border-black/75 py-1.5 px-3 text-black opacity-75 transition-all hover:bg-teal-500/75 hover:opacity-100"
+          href="https://jgleman.github.io/color-box/"
+          ><img
+            class="h-4 w-4"
+            src="documentation.svg"
+            width="20"
+            height="20"
+          />
+          Documentation</a
+        >
+      </p>
+    </header>
+    <main class="my-8">
+      <div class="mx-2 my-6 overflow-auto md:mx-auto md:w-11/12 md:max-w-3xl">
+        <h2 class="text-lg font-bold">color-box Features</h2>
+        <p class="text-zinc-700">
+          Adjust and mix colors. Modular, only use what you need. Includes
+          TypeScript types. Supports tree shaking. Immutable, functions always
+          return a new Color instance.
+        </p>
+      </div>
+      <div class="mx-2 my-4 overflow-auto md:mx-auto md:w-11/12 md:max-w-3xl">
+        <h2 class="text-lg font-bold">Example</h2>
+        <pre><code class="language-js">
+import { Color, darken, hexString } from "@jgleman/color-box";
+
+const myColor = new Color("#336699");
+const myDarkerColor = darken(myColor, 20);
+console.log(hexString(myDarkerColor));
+// #1a334d
+      </code></pre>
+      </div>
+      <div id="root"></div>
+    </main>
+    <footer class="bg-zinc-100 p-4">
+      <p class="text-right">&copy; Jason Gleman</p>
+    </footer>
+  </body>
+</html>
