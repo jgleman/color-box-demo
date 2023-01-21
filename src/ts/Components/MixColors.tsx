@@ -19,16 +19,25 @@ function MixColors() {
 
   return (
     <div className="mx-2 my-8 md:mx-auto md:w-11/12 md:max-w-3xl">
-      <p className="mx-auto mb-4 w-52 text-zinc-700 md:w-full">
-        Enter a color value into the fields below. Adjust the mix slider to see
-        a demonstration of the{" "}
+      <p className="mx-autow-52 text-zinc-700 md:w-full">
+        Adjust the mix slider to see a demonstration of the{" "}
         <a
           className="text-blue-700 underline hover:text-blue-900"
           href="https://jgleman.github.io/color-box/functions/mix.html"
         >
           mix
         </a>{" "}
-        function.
+        function. Try entering your own colors.
+      </p>
+      <p className="mb-4 text-sm text-black/60">
+        The mix function is an implementation of the mixing algorithm from{" "}
+        <a
+          className="text-blue-700 underline hover:text-blue-900"
+          href="https://sass-lang.com/documentation/modules/color#mix"
+        >
+          Sass
+        </a>
+        .
       </p>
       <div className="mb-6 flex flex-col items-center justify-between sm:flex-row">
         <div className="mb-2 flex w-52 flex-col items-center justify-between">
@@ -64,7 +73,7 @@ function MixColors() {
           <ColorSwatch color={colorMix} />
         </div>
         <div className="mb-2 flex w-52 flex-col items-center justify-between">
-          <label htmlFor="color1" className="text-md uppercase text-zinc-700">
+          <label htmlFor="color2" className="text-md uppercase text-zinc-700">
             Color 2
           </label>
           <input

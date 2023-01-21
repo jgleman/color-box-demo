@@ -34,7 +34,7 @@ function AdjustAlpha() {
         Adjust the opacity (alpha) of a color.
       </p>
       <div className="mb-6 flex flex-col justify-between gap-4 sm:flex-row">
-        <div className="w-52 flex-none">
+        <div className="mx-auto w-52 flex-none">
           <label htmlFor="txtcolor" className="text-md uppercase text-zinc-700">
             Text Color
           </label>
@@ -58,12 +58,12 @@ function AdjustAlpha() {
         </div>
         <div className="mb-2 flex flex-1 flex-col items-center items-center justify-between">
           <div
-            className="mb-4 w-full rounded"
+            className="mb-4 w-52 rounded md:w-full"
             style={{ backgroundColor: hexString(bgColor) }}
           >
             <p
               style={{ color: hexString(setAlpha(txtColor, a)) }}
-              className="py-8 text-center text-4xl font-bold"
+              className="py-8 text-center text-2xl font-bold md:text-4xl"
             >
               Alpha {a}%
             </p>

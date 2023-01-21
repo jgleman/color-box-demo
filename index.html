@@ -57,16 +57,18 @@
     </header>
     <main class="my-8">
       <div class="mx-2 my-6 overflow-auto md:mx-auto md:w-11/12 md:max-w-3xl">
-        <h2 class="text-lg font-bold">color-box Features</h2>
+        <h2 class="text-lg font-bold">Features</h2>
         <p class="text-zinc-700">
-          Adjust and mix colors. Modular, only use what you need. Includes
-          TypeScript types. Supports tree shaking. Immutable, functions always
-          return a new Color instance.
+          <strong>color-box</strong> enables you to easily adjust, inspect, mix
+          colors and more. It's modular and supports tree shaking - you only
+          bundle what you use! Additionally, <strong>color-box</strong> includes
+          TypeScript types and functions are immutable, always returning a new
+          Color object.
         </p>
       </div>
       <div class="mx-2 my-4 overflow-auto md:mx-auto md:w-11/12 md:max-w-3xl">
         <h2 class="text-lg font-bold">Example</h2>
-        <pre><code class="language-js">
+        <pre class="bg-black"><code class="language-js">
 import { Color, darken, hexString } from "@jgleman/color-box";
 
 const myColor = new Color("#336699");
@@ -74,6 +76,15 @@ const myDarkerColor = darken(myColor, 20);
 console.log(hexString(myDarkerColor));
 // #1a334d
       </code></pre>
+      </div>
+      <div class="mx-2 my-8 md:mx-auto md:w-11/12 md:max-w-3xl">
+        <h2 class="text-lg font-bold">Live Demo</h2>
+        <noscript>
+          <p>
+            Live demo kind of requires JavaScript to be enabled, this is a
+            JavaScript library after all.
+          </p>
+        </noscript>
       </div>
       <div id="root"></div>
     </main>
