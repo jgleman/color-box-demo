@@ -3,7 +3,7 @@
 import { useState, useMemo, useEffect } from "react";
 import { Color, hexString, getAlpha, setAlpha } from "@jgleman/color-box";
 
-//import ColorSwatch from "@components/ColorSwatch";
+import CodeSample from "@components/CodeSample";
 
 function AdjustAlpha() {
   const [backgroundColor, setBackgroundColor] = useState("#2dd4bf");
@@ -29,11 +29,11 @@ function AdjustAlpha() {
   }, [txtColor]);
 
   return (
-    <div className="mx-2 my-8 md:mx-auto md:w-11/12 md:max-w-3xl">
+    <div className="mx-2 my-20 md:mx-auto md:w-11/12 md:max-w-3xl">
       <p className="mx-auto mb-4 w-52 text-zinc-700 md:w-full">
         Adjust the opacity (alpha) of a color.
       </p>
-      <div className="mb-6 flex flex-col justify-between gap-4 sm:flex-row">
+      <div className="flex flex-col justify-between gap-4 sm:flex-row">
         <div className="mx-auto w-52 flex-none">
           <label htmlFor="txtcolor" className="text-md uppercase text-zinc-700">
             Text Color
@@ -58,11 +58,16 @@ function AdjustAlpha() {
         </div>
         <div className="mb-2 flex flex-1 flex-col items-center items-center justify-between">
           <div
-            className="mb-4 w-52 rounded md:w-full"
+            className="mb-4 mt-6 w-52 rounded md:w-full"
             style={{ backgroundColor: hexString(bgColor) }}
           >
             <p
-              style={{ color: hexString(setAlpha(txtColor, a)) }}
+              style={{
+                color:
+                  txtColor.hex !== ""
+                    ? hexString(setAlpha(txtColor, a))
+                    : "#000000",
+              }}
               className="py-8 text-center text-2xl font-bold md:text-4xl"
             >
               Alpha {a}%
@@ -85,6 +90,11 @@ function AdjustAlpha() {
           </div>
         </div>
       </div>
+      {/* prettier-ignore */}
+      <CodeSample>
+const color = new Color("{textColor}"); <br/>
+const newColor = setAlpha(color, {a}));
+      </CodeSample>
     </div>
   );
 }

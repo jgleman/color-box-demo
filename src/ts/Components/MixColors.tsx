@@ -18,8 +18,8 @@ function MixColors() {
       : new Color(undefined);
 
   return (
-    <div className="mx-2 my-8 md:mx-auto md:w-11/12 md:max-w-3xl">
-      <p className="mx-autow-52 text-zinc-700 md:w-full">
+    <div className="mx-2 mt-8 mb-20 md:mx-auto md:w-11/12 md:max-w-3xl">
+      <p className="mx-auto w-52 text-zinc-700 md:w-full">
         Adjust the mix slider to see a demonstration of the{" "}
         <a
           className="text-blue-700 underline hover:text-blue-900"

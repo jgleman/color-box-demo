@@ -26,7 +26,7 @@ function CopyToClipboard({ value }: CopyToClipboardProps) {
     >
       <span className="sr-only">Copy {value} to clipbaord</span>
       <Duplicate
-        title={`Copy ${value} to clipbaord`}
+        title={`Copy ${value} to clipboard`}
         className="h-4 w-4 stroke-zinc-400 transition-all group-hover:stroke-blue-400"
       />
     </button>

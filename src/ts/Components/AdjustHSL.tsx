@@ -45,7 +45,7 @@ function AdjustHSL() {
   }, [colorC]);
 
   return (
-    <div className="mx-2 my-6 md:mx-auto md:w-11/12 md:max-w-3xl">
+    <div className="mx-2 my-20 md:mx-auto md:w-11/12 md:max-w-3xl">
       <div className="mb-6 flex flex-col items-center justify-between sm:flex-row">
         <div className="w-52">
           <p className="mb-4 text-zinc-700">
