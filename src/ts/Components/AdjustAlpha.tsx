@@ -28,12 +28,14 @@ function AdjustAlpha() {
     }
   }, [txtColor]);
 
+  const codeSample = `const color = new Color("${textColor}");\nconst newColor = setAlpha(color, ${a}));`;
+
   return (
-    <div className="mx-2 my-20 md:mx-auto md:w-11/12 md:max-w-3xl">
-      <p className="mx-auto mb-4 w-52 text-zinc-700 md:w-full">
+    <div className="mx-2 my-10 border-b border-zinc-200 pb-10 md:mx-auto md:w-11/12 md:max-w-3xl">
+      <p className="mx-auto mb-4 text-zinc-700 md:w-full">
         Adjust the opacity (alpha) of a color.
       </p>
-      <div className="flex flex-col justify-between gap-4 sm:flex-row">
+      <div className="flex flex-row justify-between gap-4 max-[440px]:flex-col">
         <div className="mx-auto w-52 flex-none">
           <label htmlFor="txtcolor" className="text-md uppercase text-zinc-700">
             Text Color
@@ -90,11 +92,7 @@ function AdjustAlpha() {
           </div>
         </div>
       </div>
-      {/* prettier-ignore */}
-      <CodeSample>
-const color = new Color("{textColor}"); <br/>
-const newColor = setAlpha(color, {a}));
-      </CodeSample>
+      <CodeSample code={codeSample} />
     </div>
   );
 }

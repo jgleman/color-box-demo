@@ -1,7 +1,9 @@
 import { useState } from "react";
 
 import { Color, mix } from "@jgleman/color-box";
+
 import ColorSwatch from "@components/ColorSwatch";
+import CodeSample from "@components/CodeSample";
 
 function MixColors() {
   const [colorInputA, setColorInputA] = useState("#ff0000");
@@ -17,9 +19,11 @@ function MixColors() {
       ? mix(colorB, colorA, mixWeight)
       : new Color(undefined);
 
+  const codeSample = `const colorA = new Color("${colorInputA}");\nconst colorB = new Color("${colorInputB}");\nconst mixedColor = mix(colorB, colorA, ${mixWeight});`;
+
   return (
-    <div className="mx-2 mt-8 mb-20 md:mx-auto md:w-11/12 md:max-w-3xl">
-      <p className="mx-auto w-52 text-zinc-700 md:w-full">
+    <div className="mx-2 my-10 border-b border-zinc-200 pb-10 md:mx-auto md:w-11/12 md:max-w-3xl">
+      <p className="mx-auto w-full text-zinc-700">
         Adjust the mix slider to see a demonstration of the{" "}
         <a
           className="text-blue-700 underline hover:text-blue-900"
@@ -29,7 +33,7 @@ function MixColors() {
         </a>{" "}
         function. Try entering your own colors.
       </p>
-      <p className="mb-4 text-sm text-black/60">
+      <p className="mx-auto mb-4  w-full text-sm text-zinc-500">
         The mix function is an implementation of the mixing algorithm from{" "}
         <a
           className="text-blue-700 underline hover:text-blue-900"
@@ -54,10 +58,13 @@ function MixColors() {
           <ColorSwatch color={colorA} />
         </div>
         <div className="mb-2 flex w-52 flex-col items-center justify-between">
-          <label htmlFor="weight" className="text-md uppercase text-zinc-700">
+          <label
+            htmlFor="weight"
+            className="text-md w-full text-center uppercase text-zinc-700"
+          >
             Mix{" "}
-            <span className="inline-block w-4 text-sm opacity-60">
-              ({mixWeight}%)
+            <span className="inline-block text-sm opacity-60">
+              (weight: {mixWeight}%)
             </span>
           </label>
           <input
@@ -86,6 +93,7 @@ function MixColors() {
           <ColorSwatch color={colorB} />
         </div>
       </div>
+      <CodeSample code={codeSample} />
     </div>
   );
 }

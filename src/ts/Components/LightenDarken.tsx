@@ -11,8 +11,12 @@ function LightenDarken() {
     return new Color(ldColor);
   }, [ldColor]);
 
+  const codeSample = `const color = new Color("{ldColor}");\nconst newColor = ${
+    litDark < 0 ? "darken" : "lighten"
+  }(color, ${Math.abs(litDark)});`;
+
   return (
-    <div className="mx-2 my-20 md:mx-auto md:w-11/12 md:max-w-3xl">
+    <div className="mx-2 my-10 border-b border-zinc-200 pb-10 md:mx-auto md:w-11/12 md:max-w-3xl">
       <div className="mb-6 flex flex-col justify-between gap-4 sm:flex-row">
         <div className="flex w-52 items-center">
           <p className="mx-auto mb-4 w-52 text-zinc-700 md:w-full">
@@ -61,7 +65,7 @@ function LightenDarken() {
           </div>
         </div>
 
-        <div className="w-52">
+        <div className="mx-auto w-52">
           <ColorSwatch
             color={
               litDark < 0
@@ -71,11 +75,7 @@ function LightenDarken() {
           />
         </div>
       </div>
-      {/* prettier-ignore */}
-      <CodeSample>
-const color = new Color("{ldColor}"); <br/>
-const newColor = {litDark < 0 ? "darken" : "lighten" }(color, {Math.abs(litDark)});
-      </CodeSample>
+      <CodeSample code={codeSample} />
     </div>
   );
 }

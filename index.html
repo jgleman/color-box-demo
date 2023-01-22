@@ -61,9 +61,8 @@
         <p class="text-zinc-700">
           <strong>color-box</strong> enables you to easily adjust, inspect, mix
           colors and more. It's modular and supports tree shaking - you only
-          bundle what you use! Additionally, <strong>color-box</strong> includes
-          TypeScript types and functions are immutable, always returning a new
-          Color object.
+          bundle what you use! TypeScript types are included and all functions
+          are immutable, always returning a new Color object.
         </p>
       </div>
       <div class="mx-2 my-4 overflow-auto md:mx-auto md:w-11/12 md:max-w-3xl">
@@ -100,8 +99,30 @@ console.log(hexString(myDarkerColor));
         </p>
       </div>
     </main>
-    <footer class="bg-zinc-100 p-4">
-      <p class="text-right">&copy; Jason Gleman</p>
+    <footer
+      class="flex flex-col items-center justify-between gap-4 bg-zinc-100 p-4 text-sm sm:flex-row"
+    >
+      <p class="flex items-center gap-2">
+        <a href="https://jgleman.com"
+          ><img
+            alt="jgleman.com"
+            src="https://jgleman.com/robot.png"
+            width="25"
+            height="25"
+        /></a>
+        &copy;
+        <script>
+          document.write(new Date().getFullYear());
+        </script>
+        Jason Gleman
+      </p>
+      <p>
+        <a
+          class="text-blue-700 underline hover:text-blue-900"
+          href="https://github.com/jgleman/color-box-demo"
+          >color-box Demo on GitHub</a
+        >
+      </p>
     </footer>
   </body>
 </html>

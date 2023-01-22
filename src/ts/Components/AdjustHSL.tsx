@@ -9,6 +9,7 @@ import {
   setLightness,
 } from "@jgleman/color-box";
 
+import CodeSample from "@components/CodeSample";
 import ColorSwatch from "@components/ColorSwatch";
 
 function AdjustHSL() {
@@ -44,8 +45,10 @@ function AdjustHSL() {
     }
   }, [colorC]);
 
+  const codeSample = `const color = new Color("${color}");\nconst newColor = setLightness(setSaturation(setHue(color, ${h}), ${s}), ${l});`;
+
   return (
-    <div className="mx-2 my-20 md:mx-auto md:w-11/12 md:max-w-3xl">
+    <div className="mx-2 my-10 border-b border-zinc-200 pb-10 md:mx-auto md:w-11/12 md:max-w-3xl">
       <div className="mb-6 flex flex-col items-center justify-between sm:flex-row">
         <div className="w-52">
           <p className="mb-4 text-zinc-700">
@@ -119,7 +122,8 @@ function AdjustHSL() {
         <ColorSwatch
           color={setLightness(setSaturation(setHue(colorC, h), s), l)}
         />
-      </div>{" "}
+      </div>
+      <CodeSample code={codeSample} />
     </div>
   );
 }
