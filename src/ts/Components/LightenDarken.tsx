@@ -18,8 +18,8 @@ function LightenDarken() {
   return (
     <div className="mx-2 my-10 border-b border-zinc-200 pb-10 md:mx-auto md:w-11/12 md:max-w-3xl">
       <div className="mb-6 flex flex-col justify-between gap-4 sm:flex-row">
-        <div className="flex w-52 items-center">
-          <p className="mx-auto mb-4 w-52 text-zinc-700 md:w-full">
+        <div className="flex w-full items-center md:w-52">
+          <p className="mx-auto mb-4 w-full text-zinc-700">
             Make a color darker or lighter
           </p>
         </div>
@@ -34,7 +34,7 @@ function LightenDarken() {
             value={ldColor}
             onChange={(e) => setLdColor(e.target.value)}
           />
-          <div className="flex flex-col items-center justify-center">
+          <div className="flex w-full flex-col items-center justify-center">
             <label
               htmlFor="ld"
               className="text-md flex w-full justify-between uppercase text-zinc-700"

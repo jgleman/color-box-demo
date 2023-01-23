@@ -75,7 +75,7 @@ function AdjustAlpha() {
               Alpha {a}%
             </p>
           </div>
-          <div className="flex flex-col items-center justify-center">
+          <div className="flex w-52 flex-col items-center justify-center">
             <label htmlFor="alpha" className="text-md uppercase text-zinc-700">
               Alpha
             </label>

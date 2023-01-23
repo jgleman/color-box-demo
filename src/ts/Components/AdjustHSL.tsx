@@ -50,27 +50,29 @@ function AdjustHSL() {
   return (
     <div className="mx-2 my-10 border-b border-zinc-200 pb-10 md:mx-auto md:w-11/12 md:max-w-3xl">
       <div className="mb-6 flex flex-col items-center justify-between sm:flex-row">
-        <div className="w-52">
-          <p className="mb-4 text-zinc-700">
+        <div className="w-full sm:w-52">
+          <p className="mb-4 text-zinc-700 sm:mx-auto sm:w-52">
             Adjust the various properties of a color, such as hue, saturation
             and lightness:
           </p>
-          <label
-            htmlFor="adjustcolor"
-            className="text-md uppercase text-zinc-700"
-          >
-            Color
-          </label>
-          <input
-            id="adjustcolor"
-            name="adjustcolor"
-            className="mb-2 w-full rounded border px-2 py-1.5 shadow-inner"
-            value={color}
-            onChange={(e) => setColorC(e.target.value)}
-          />
+          <div className="mx-auto w-52">
+            <label
+              htmlFor="adjustcolor"
+              className="text-md uppercase text-zinc-700"
+            >
+              Color
+            </label>
+            <input
+              id="adjustcolor"
+              name="adjustcolor"
+              className="mb-2 w-full rounded border px-2 py-1.5 shadow-inner"
+              value={color}
+              onChange={(e) => setColorC(e.target.value)}
+            />
+          </div>
         </div>
         <div className="mb-2 flex w-52 flex-col items-center justify-between">
-          <div>
+          <div className="w-full">
             <label htmlFor="hue" className="text-md uppercase text-zinc-700">
               Hue{" "}
               <span className="inline-block w-4 text-sm opacity-60">({h})</span>
@@ -86,7 +88,7 @@ function AdjustHSL() {
               onChange={(e) => setH(parseInt(e.target.value, 10))}
             />
           </div>
-          <div>
+          <div className="w-full">
             <label htmlFor="sat" className="text-md uppercase text-zinc-700">
               Saturation{" "}
               <span className="inline-block w-4 text-sm opacity-60">({s})</span>
@@ -102,7 +104,7 @@ function AdjustHSL() {
               onChange={(e) => setS(parseInt(e.target.value, 10))}
             />
           </div>
-          <div>
+          <div className="w-full">
             <label htmlFor="lit" className="text-md uppercase text-zinc-700">
               Lightness{" "}
               <span className="inline-block w-4 text-sm opacity-60">({l})</span>
