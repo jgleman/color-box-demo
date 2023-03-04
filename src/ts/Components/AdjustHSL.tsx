@@ -48,7 +48,7 @@ function AdjustHSL() {
 
   const calculatedColor = isColorValid(colorC)
     ? setLightness(setSaturation(setHue(colorC, h), s), l)
-    : undefined;
+    : new Color("");
 
   const codeSample = `const color = new Color("${color}");\nconst newColor = setLightness(setSaturation(setHue(color, ${h}), ${s}), ${l});`;
 
