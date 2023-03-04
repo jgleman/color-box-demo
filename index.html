@@ -9,6 +9,12 @@
     <script src="prism.js" defer></script>
     <link href="prism.css" rel="stylesheet" type="text/css" />
     <link href="/src/css/index.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript">
+      document.addEventListener("DOMContentLoaded", function () {
+        let c = document.getElementById("y");
+        if (c) c.innerText = new Date().getFullYear();
+      });
+    </script>
   </head>
   <body>
     <header
@@ -20,12 +26,12 @@
             alt="color-box"
             src="colorbox-logo.svg"
             class="max-h-[50px] w-auto"
-            width="auto"
-            height="30"
+            width="366"
+            height="50"
           />
         </h1>
       </div>
-      <p class="my-4 text-lg text-teal-800">
+      <p class="my-4 text-lg text-teal-900">
         A Modern JavaScript Color Library
       </p>
       <p class="mx-2 text-center">
@@ -39,7 +45,13 @@
           class="flex items-center gap-1 rounded border border-black/75 py-1.5 px-3 text-black opacity-75 transition-all hover:bg-teal-500/75 hover:opacity-100"
           href="https://github.com/jgleman/color-box"
         >
-          <img class="h-4 w-4" src="github-mark.svg" width="20" height="20" />
+          <img
+            class="h-4 w-4"
+            alt=""
+            src="github-mark.svg"
+            width="20"
+            height="20"
+          />
           color-box on GitHub</a
         >
         <a
@@ -47,6 +59,7 @@
           href="https://jgleman.github.io/color-box/"
           ><img
             class="h-4 w-4"
+            alt=""
             src="documentation.svg"
             width="20"
             height="20"
@@ -110,11 +123,7 @@ console.log(hexString(myDarkerColor));
             width="25"
             height="25"
         /></a>
-        &copy;
-        <script>
-          document.write(new Date().getFullYear());
-        </script>
-        Jason Gleman
+        &copy; <span id="y"></span> Jason Gleman
       </p>
       <p>
         <a
