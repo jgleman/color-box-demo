@@ -70,7 +70,7 @@ function MixColors() {
             className="text-md w-full text-center uppercase text-zinc-700"
           >
             Mix{" "}
-            <span className="inline-block text-sm opacity-60">
+            <span className="inline-block text-sm opacity-70">
               (weight: {mixWeight}%)
             </span>
           </label>
