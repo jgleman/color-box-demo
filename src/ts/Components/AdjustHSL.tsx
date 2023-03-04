@@ -7,6 +7,7 @@ import {
   getSaturation,
   getLightness,
   setLightness,
+  isColorValid,
 } from "@jgleman/color-box";
 
 import CodeSample from "@components/CodeSample";
@@ -19,9 +20,9 @@ function AdjustHSL() {
     return new Color(color);
   }, [color]);
 
-  const tSat = colorC.hex ? getSaturation(colorC) * 100 : 0;
-  const tHue = colorC.hex ? getHue(colorC) : 0;
-  const tLit = colorC.hex ? getLightness(colorC) : 0;
+  const tSat = isColorValid(colorC) ? getSaturation(colorC) * 100 : 0;
+  const tHue = isColorValid(colorC) ? getHue(colorC) : 0;
+  const tLit = isColorValid(colorC) ? getLightness(colorC) : 0;
   const [h, setH] = useState(tHue);
   const [s, setS] = useState<number>(tSat);
   const [l, setL] = useState<number>(tLit);
@@ -31,7 +32,7 @@ function AdjustHSL() {
   }
 
   useEffect(() => {
-    if (colorC.hex) {
+    if (isColorValid(colorC)) {
       const sat = getSaturation(colorC) * 100 || 0;
       const hue = getHue(colorC) || 0;
       const lit = getLightness(colorC) * 100 || 0;
@@ -44,6 +45,10 @@ function AdjustHSL() {
       setL(0);
     }
   }, [colorC]);
+
+  const calculatedColor = isColorValid(colorC)
+    ? setLightness(setSaturation(setHue(colorC, h), s), l)
+    : undefined;
 
   const codeSample = `const color = new Color("${color}");\nconst newColor = setLightness(setSaturation(setHue(color, ${h}), ${s}), ${l});`;
 
@@ -121,9 +126,7 @@ function AdjustHSL() {
             />
           </div>
         </div>
-        <ColorSwatch
-          color={setLightness(setSaturation(setHue(colorC, h), s), l)}
-        />
+        <ColorSwatch color={calculatedColor} />
       </div>
       <CodeSample code={codeSample} />
     </div>

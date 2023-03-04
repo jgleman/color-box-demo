@@ -1,5 +1,5 @@
 import { useState, useMemo } from "react";
-import { Color, lighten, darken } from "@jgleman/color-box";
+import { Color, lighten, darken, isColorValid } from "@jgleman/color-box";
 import ColorSwatch from "@components/ColorSwatch";
 import CodeSample from "@components/CodeSample";
 
@@ -68,9 +68,11 @@ function LightenDarken() {
         <div className="mx-auto w-52">
           <ColorSwatch
             color={
-              litDark < 0
-                ? darken(color, Math.abs(litDark))
-                : lighten(color, litDark)
+              isColorValid(color)
+                ? litDark < 0
+                  ? darken(color, Math.abs(litDark))
+                  : lighten(color, litDark)
+                : new Color("")
             }
           />
         </div>

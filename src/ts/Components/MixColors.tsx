@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { Color, mix } from "@jgleman/color-box";
+import { Color, mix, contrast, isColorValid } from "@jgleman/color-box";
 
 import ColorSwatch from "@components/ColorSwatch";
 import CodeSample from "@components/CodeSample";
@@ -12,10 +12,17 @@ function MixColors() {
   const colorA = new Color(colorInputA);
   const colorB = new Color(colorInputB);
 
+  let contrastRatio = "";
+  try {
+    contrastRatio = contrast(colorA, colorB);
+  } catch (e) {
+    // probably an invalid color.
+  }
+
   const [mixWeight, setMixWeight] = useState(50);
 
   const colorMix =
-    colorB.hex && colorA.hex
+    isColorValid(colorB) && isColorValid(colorA)
       ? mix(colorB, colorA, mixWeight)
       : new Color(undefined);
 
@@ -93,6 +100,14 @@ function MixColors() {
           <ColorSwatch color={colorB} />
         </div>
       </div>
+      <div className="mb-6 text-center">
+        <p>
+          Contrast Ratio between <span className="opacity-70">Color 1</span> and{" "}
+          <span className="opacity-70">Color 2</span>:{" "}
+          <strong>{contrastRatio || "??:1"}</strong>
+        </p>
+      </div>
+
       <CodeSample code={codeSample} />
     </div>
   );

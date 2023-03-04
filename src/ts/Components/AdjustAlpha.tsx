@@ -1,7 +1,13 @@
 // const [alphaP, setAlphaP] = useState(100);
 
 import { useState, useMemo, useEffect } from "react";
-import { Color, hexString, getAlpha, setAlpha } from "@jgleman/color-box";
+import {
+  Color,
+  hexString,
+  getAlpha,
+  setAlpha,
+  isColorValid,
+} from "@jgleman/color-box";
 
 import CodeSample from "@components/CodeSample";
 
@@ -19,7 +25,7 @@ function AdjustAlpha() {
   }, [textColor]);
 
   useEffect(() => {
-    if (txtColor.hex) {
+    if (isColorValid(txtColor)) {
       const alpha = getAlpha(txtColor);
       const a = typeof alpha === "undefined" ? 100 : alpha * 100;
       setA(a);
@@ -65,10 +71,9 @@ function AdjustAlpha() {
           >
             <p
               style={{
-                color:
-                  txtColor.hex !== ""
-                    ? hexString(setAlpha(txtColor, a))
-                    : "#000000",
+                color: isColorValid(txtColor)
+                  ? hexString(setAlpha(txtColor, a))
+                  : "#000000",
               }}
               className="py-8 text-center text-2xl font-bold md:text-4xl"
             >
