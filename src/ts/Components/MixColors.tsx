@@ -70,7 +70,7 @@ function MixColors() {
             className="text-md w-full text-center uppercase text-zinc-700"
           >
             Mix{" "}
-            <span className="inline-block text-sm opacity-70">
+            <span className="inline-block text-sm opacity-80">
               (weight: {mixWeight}%)
             </span>
           </label>
@@ -102,8 +102,8 @@ function MixColors() {
       </div>
       <div className="mb-6 text-center">
         <p>
-          Contrast Ratio between <span className="opacity-70">Color 1</span> and{" "}
-          <span className="opacity-70">Color 2</span>:{" "}
+          Contrast Ratio between <span className="opacity-80">Color 1</span> and{" "}
+          <span className="opacity-80">Color 2</span>:{" "}
           <strong>{contrastRatio || "??:1"}</strong>
         </p>
       </div>

@@ -80,7 +80,7 @@ function AdjustHSL() {
           <div className="w-full">
             <label htmlFor="hue" className="text-md uppercase text-zinc-700">
               Hue{" "}
-              <span className="inline-block w-4 text-sm opacity-70">({h})</span>
+              <span className="inline-block w-4 text-sm opacity-80">({h})</span>
             </label>
             <input
               className="mb-2 w-full px-2 py-1.5"
@@ -96,7 +96,7 @@ function AdjustHSL() {
           <div className="w-full">
             <label htmlFor="sat" className="text-md uppercase text-zinc-700">
               Saturation{" "}
-              <span className="inline-block w-4 text-sm opacity-70">({s})</span>
+              <span className="inline-block w-4 text-sm opacity-80">({s})</span>
             </label>
             <input
               className="mb-2 w-full px-2 py-1.5"
@@ -112,7 +112,7 @@ function AdjustHSL() {
           <div className="w-full">
             <label htmlFor="lit" className="text-md uppercase text-zinc-700">
               Lightness{" "}
-              <span className="inline-block w-4 text-sm opacity-70">({l})</span>
+              <span className="inline-block w-4 text-sm opacity-80">({l})</span>
             </label>
             <input
               className="mb-2 w-full px-2 py-1.5"
