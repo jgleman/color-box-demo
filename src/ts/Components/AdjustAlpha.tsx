@@ -38,29 +38,29 @@ function AdjustAlpha() {
   const codeSample = `const color = new Color("${textColor}");\nconst newColor = setAlpha(color, ${a}));`;
 
   return (
-    <div className="mx-2 my-4 rounded-2xl border border-zinc-100 bg-white p-6 shadow-sm md:mx-auto md:w-11/12 md:max-w-3xl md:p-8">
-      <p className="mx-auto mb-4 text-zinc-700 md:w-full">
+    <div className="mx-2 my-4 rounded-2xl border border-zinc-100 bg-white p-6 shadow-sm md:mx-auto md:w-11/12 md:max-w-3xl md:p-8 dark:border-zinc-700 dark:bg-zinc-800">
+      <p className="mx-auto mb-4 text-zinc-700 md:w-full dark:text-zinc-300">
         Adjust the opacity (alpha) of a color.
       </p>
       <div className="flex flex-row justify-between gap-4 max-[440px]:flex-col">
         <div className="mx-auto w-52 flex-none">
-          <label htmlFor="txtcolor" className="text-md uppercase text-zinc-700">
+          <label htmlFor="txtcolor" className="text-md uppercase text-zinc-700 dark:text-zinc-300">
             Text Color
           </label>
           <input
             id="txtcolor"
             name="txtcolor"
-            className="mb-2 w-full rounded border px-2 py-1.5 shadow-inner"
+            className="mb-2 w-full rounded border px-2 py-1.5 shadow-inner dark:border-zinc-600 dark:bg-zinc-700 dark:text-zinc-200"
             value={textColor}
             onChange={(e) => setTextColor(e.target.value)}
           />
-          <label htmlFor="bgcolor" className="text-md uppercase text-zinc-700">
+          <label htmlFor="bgcolor" className="text-md uppercase text-zinc-700 dark:text-zinc-300">
             Background Color
           </label>
           <input
             id="bgcolor"
             name="bgcolor"
-            className="mb-2 w-full rounded border px-2 py-1.5 shadow-inner"
+            className="mb-2 w-full rounded border px-2 py-1.5 shadow-inner dark:border-zinc-600 dark:bg-zinc-700 dark:text-zinc-200"
             value={backgroundColor}
             onChange={(e) => setBackgroundColor(e.target.value)}
           />
@@ -93,7 +93,7 @@ function AdjustAlpha() {
             </div>
           )}
           <div className="flex w-52 flex-col items-center justify-center">
-            <label htmlFor="alpha" className="text-md uppercase text-zinc-700">
+            <label htmlFor="alpha" className="text-md uppercase text-zinc-700 dark:text-zinc-300">
               Alpha
             </label>
             <input

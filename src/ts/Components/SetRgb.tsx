@@ -35,25 +35,25 @@ function SetRgb() {
   const codeSample = `const color = new Color("${color}");\nconst newColor = setRgb(color, { r: ${r}, g: ${g}, b: ${b} });`;
 
   return (
-    <div className="mx-2 my-4 rounded-2xl border border-zinc-100 bg-white p-6 shadow-sm md:mx-auto md:w-11/12 md:max-w-3xl md:p-8">
-      <p className="mb-4 text-zinc-700">
+    <div className="mx-2 my-4 rounded-2xl border border-zinc-100 bg-white p-6 shadow-sm md:mx-auto md:w-11/12 md:max-w-3xl md:p-8 dark:border-zinc-700 dark:bg-zinc-800">
+      <p className="mb-4 text-zinc-700 dark:text-zinc-300">
         Set individual RGB channel values.
       </p>
       <div className="mb-6 flex flex-col items-center justify-between sm:flex-row">
         <div className="mb-4 w-full sm:mb-0 sm:w-52">
-          <label htmlFor="rgbcolor" className="text-md uppercase text-zinc-700">
+          <label htmlFor="rgbcolor" className="text-md uppercase text-zinc-700 dark:text-zinc-300">
             Color
           </label>
           <input
             id="rgbcolor"
             name="rgbcolor"
-            className="mb-2 w-full rounded border px-2 py-1.5 shadow-inner"
+            className="mb-2 w-full rounded border px-2 py-1.5 shadow-inner dark:border-zinc-600 dark:bg-zinc-700 dark:text-zinc-200"
             value={color}
             onChange={(e) => setColor(e.target.value)}
           />
         </div>
         <div className="mb-2 flex w-52 flex-col justify-between">
-          <label htmlFor="r" className="text-md uppercase text-zinc-700">
+          <label htmlFor="r" className="text-md uppercase text-zinc-700 dark:text-zinc-300">
             Red{" "}
             <span className="inline-block text-sm opacity-80">({r})</span>
           </label>
@@ -67,7 +67,7 @@ function SetRgb() {
             max="255"
             onChange={(e) => setR(parseInt(e.target.value, 10))}
           />
-          <label htmlFor="g" className="text-md uppercase text-zinc-700">
+          <label htmlFor="g" className="text-md uppercase text-zinc-700 dark:text-zinc-300">
             Green{" "}
             <span className="inline-block text-sm opacity-80">({g})</span>
           </label>
@@ -81,7 +81,7 @@ function SetRgb() {
             max="255"
             onChange={(e) => setG(parseInt(e.target.value, 10))}
           />
-          <label htmlFor="b" className="text-md uppercase text-zinc-700">
+          <label htmlFor="b" className="text-md uppercase text-zinc-700 dark:text-zinc-300">
             Blue{" "}
             <span className="inline-block text-sm opacity-80">({b})</span>
           </label>
