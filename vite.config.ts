@@ -1,11 +1,25 @@
 import { defineConfig } from "vite";
 import * as path from "path";
-import react from "@vitejs/plugin-react-swc";
-import eslint from "vite-plugin-eslint";
+import { readFileSync } from "fs";
+import react from "@vitejs/plugin-react";
+
+const colorBoxVersion: string = JSON.parse(
+  readFileSync(
+    path.resolve(__dirname, "node_modules/@jgleman/color-box/package.json"),
+    "utf-8"
+  )
+).version;
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react(), eslint()],
+  plugins: [
+    react(),
+    {
+      name: "html-inject-color-box-version",
+      transformIndexHtml: (html) =>
+        html.replace("%COLOR_BOX_VERSION%", colorBoxVersion),
+    },
+  ],
   base: "/color-box",
   resolve: {
     alias: [
