@@ -11,12 +11,12 @@ function LightenDarken() {
     return new Color(ldColor);
   }, [ldColor]);
 
-  const codeSample = `const color = new Color("{ldColor}");\nconst newColor = ${
+  const codeSample = `const color = new Color("${ldColor}");\nconst newColor = ${
     litDark < 0 ? "darken" : "lighten"
   }(color, ${Math.abs(litDark)});`;
 
   return (
-    <div className="mx-2 my-10 border-b border-zinc-200 pb-10 md:mx-auto md:w-11/12 md:max-w-3xl">
+    <div className="mx-2 my-4 rounded-2xl border border-zinc-100 bg-white p-6 shadow-sm md:mx-auto md:w-11/12 md:max-w-3xl md:p-8">
       <div className="mb-6 flex flex-col justify-between gap-4 sm:flex-row">
         <div className="flex w-full items-center md:w-52">
           <p className="mx-auto mb-4 w-full text-zinc-700">

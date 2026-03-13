@@ -10,7 +10,7 @@ function ColorSwatch({ color, label = "" }: ColorSwatchProps) {
   return (
     <div className="w-52">
       {label ? <p className="m-2 font-bold leading-none">{label}</p> : null}
-      <div className="mb-2 w-full overflow-hidden rounded border border-zinc-400">
+      <div className="mb-2 w-full overflow-hidden rounded-lg border border-zinc-200">
         <div>
           <div
             className="h-24 w-full overflow-hidden"

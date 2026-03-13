@@ -6,7 +6,7 @@ import ColorSwatch from "@components/ColorSwatch";
 import CodeSample from "@components/CodeSample";
 
 function MixColors() {
-  const [colorInputA, setColorInputA] = useState("#ff0000");
+  const [colorInputA, setColorInputA] = useState("tomato");
   const [colorInputB, setColorInputB] = useState("#0000ff");
 
   const colorA = new Color(colorInputA);
@@ -29,11 +29,11 @@ function MixColors() {
   const codeSample = `const colorA = new Color("${colorInputA}");\nconst colorB = new Color("${colorInputB}");\nconst mixedColor = mix(colorB, colorA, ${mixWeight});`;
 
   return (
-    <div className="mx-2 my-10 border-b border-zinc-200 pb-10 md:mx-auto md:w-11/12 md:max-w-3xl">
+    <div className="mx-2 my-4 rounded-2xl border border-zinc-100 bg-white p-6 shadow-sm md:mx-auto md:w-11/12 md:max-w-3xl md:p-8">
       <p className="mx-auto w-full text-zinc-700">
         Adjust the mix slider to see a demonstration of the{" "}
         <a
-          className="text-blue-700 underline hover:text-blue-900"
+          className="text-teal-600 underline underline-offset-2 hover:text-teal-800"
           href="https://jgleman.github.io/color-box/functions/mix.html"
         >
           mix
@@ -43,7 +43,7 @@ function MixColors() {
       <p className="mx-auto mb-4  w-full text-sm text-zinc-500">
         The mix function is an implementation of the mixing algorithm from{" "}
         <a
-          className="text-blue-700 underline hover:text-blue-900"
+          className="text-teal-600 underline underline-offset-2 hover:text-teal-800"
           href="https://sass-lang.com/documentation/modules/color#mix"
         >
           Sass

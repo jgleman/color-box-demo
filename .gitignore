@@ -12,6 +12,15 @@ dist
 dist-ssr
 *.local
 
+# AI agent directories
+.claude
+.cursor
+.aider
+.codeium
+.copilot
+.continue
+.windsurf
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

@@ -53,7 +53,7 @@ function AdjustHSL() {
   const codeSample = `const color = new Color("${color}");\nconst newColor = setLightness(setSaturation(setHue(color, ${h}), ${s}), ${l});`;
 
   return (
-    <div className="mx-2 my-10 border-b border-zinc-200 pb-10 md:mx-auto md:w-11/12 md:max-w-3xl">
+    <div className="mx-2 my-4 rounded-2xl border border-zinc-100 bg-white p-6 shadow-sm md:mx-auto md:w-11/12 md:max-w-3xl md:p-8">
       <div className="mb-6 flex flex-col items-center justify-between sm:flex-row">
         <div className="w-full sm:w-52">
           <p className="mb-4 text-zinc-700 sm:mx-auto sm:w-52">

@@ -6,6 +6,7 @@ import {
   hexString,
   getAlpha,
   setAlpha,
+  readableColor,
   isColorValid,
 } from "@jgleman/color-box";
 
@@ -37,7 +38,7 @@ function AdjustAlpha() {
   const codeSample = `const color = new Color("${textColor}");\nconst newColor = setAlpha(color, ${a}));`;
 
   return (
-    <div className="mx-2 my-10 border-b border-zinc-200 pb-10 md:mx-auto md:w-11/12 md:max-w-3xl">
+    <div className="mx-2 my-4 rounded-2xl border border-zinc-100 bg-white p-6 shadow-sm md:mx-auto md:w-11/12 md:max-w-3xl md:p-8">
       <p className="mx-auto mb-4 text-zinc-700 md:w-full">
         Adjust the opacity (alpha) of a color.
       </p>
@@ -80,6 +81,17 @@ function AdjustAlpha() {
               Alpha {a}%
             </p>
           </div>
+          {isColorValid(bgColor) && (
+            <div
+              className="mb-2 w-52 rounded px-3 py-2 font-mono text-sm md:w-full"
+              style={{
+                backgroundColor: hexString(bgColor),
+                color: hexString(readableColor(bgColor)),
+              }}
+            >
+              readableColor: {hexString(readableColor(bgColor))}
+            </div>
+          )}
           <div className="flex w-52 flex-col items-center justify-center">
             <label htmlFor="alpha" className="text-md uppercase text-zinc-700">
               Alpha
