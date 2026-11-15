@@ -19,3 +19,6 @@ The bucket name and CloudFront distribution ID are kept out of the repo. Copy
 Needs AWS credentials that can list, write, and delete in the bucket and create
 CloudFront invalidations. Uploads delete files under `color-box/` that aren't in
 the new build (old hashed bundles); nothing outside that folder is touched.
+
+Files under `assets/` have content-hashed names, so they're uploaded with a
+one-year immutable `Cache-Control`; everything else gets five minutes.

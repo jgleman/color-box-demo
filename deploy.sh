@@ -25,11 +25,31 @@ DISTRIBUTION_ID="${DEPLOY_DISTRIBUTION_ID:?Set DEPLOY_DISTRIBUTION_ID in $ENV_FI
 
 npm run build
 
-# --delete removes old hashed bundles from earlier builds. It only applies
-# under $PREFIX/, so the rest of the bucket is untouched.
-aws s3 sync dist "s3://$BUCKET/$PREFIX/" \
-  --delete \
+DEST="s3://$BUCKET/$PREFIX"
+# Vite puts a content hash in every file name under assets/, so a changed file
+# always gets a new URL and these can be cached for a year.
+CACHE_HASHED="public, max-age=31536000, immutable"
+# index.html, prism.* and the SVGs keep their names across builds.
+CACHE_UNHASHED="public, max-age=300"
+
+# Order matters: upload the new bundles before the index.html that references
+# them, and prune old bundles only after index.html no longer points at them.
+aws s3 sync dist/assets "$DEST/assets/" \
+  --cache-control "$CACHE_HASHED" \
   --exclude ".DS_Store" \
+  "$@"
+
+# --delete only applies under $PREFIX/, so the rest of the bucket is untouched.
+aws s3 sync dist "$DEST/" \
+  --cache-control "$CACHE_UNHASHED" \
+  --exclude ".DS_Store" \
+  --exclude "assets/*" \
+  --delete \
+  "$@"
+
+aws s3 sync dist/assets "$DEST/assets/" \
+  --exclude ".DS_Store" \
+  --delete \
   "$@"
 
 if [[ "${1:-}" == "--dryrun" ]]; then
