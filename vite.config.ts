@@ -3,9 +3,11 @@ import * as path from "path";
 import { readFileSync } from "fs";
 import react from "@vitejs/plugin-react";
 
+const projectDir = import.meta.dirname;
+
 const colorBoxVersion: string = JSON.parse(
   readFileSync(
-    path.resolve(__dirname, "node_modules/@jgleman/color-box/package.json"),
+    path.resolve(projectDir, "node_modules/@jgleman/color-box/package.json"),
     "utf-8",
   ),
 ).version;
@@ -23,12 +25,12 @@ export default defineConfig({
   base: "/color-box",
   resolve: {
     alias: [
-      { find: "@", replacement: path.resolve(__dirname, "src") },
-      { find: "@assets", replacement: path.resolve(__dirname, "src/assets") },
-      { find: "@util", replacement: path.resolve(__dirname, "src/ts/Util") },
+      { find: "@", replacement: path.resolve(projectDir, "src") },
+      { find: "@assets", replacement: path.resolve(projectDir, "src/assets") },
+      { find: "@util", replacement: path.resolve(projectDir, "src/ts/Util") },
       {
         find: "@components",
-        replacement: path.resolve(__dirname, "src/ts/Components"),
+        replacement: path.resolve(projectDir, "src/ts/Components"),
       },
     ],
   },
