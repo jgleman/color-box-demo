@@ -12,6 +12,9 @@ dist
 dist-ssr
 *.local
 
+# Deploy settings (bucket name, CloudFront ID); see .env.deploy.example
+.env.deploy
+
 # AI agent directories
 .claude
 .cursor
