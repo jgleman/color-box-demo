@@ -31,7 +31,7 @@ function MixColors() {
       <p className="mx-auto w-full text-zinc-700 dark:text-zinc-300">
         Adjust the mix slider to see a demonstration of the{" "}
         <a
-          className="text-teal-600 underline underline-offset-2 hover:text-teal-800 dark:text-teal-400 dark:hover:text-teal-300"
+          className="text-teal-700 underline underline-offset-2 hover:text-teal-900 dark:text-teal-400 dark:hover:text-teal-300"
           href="https://jgleman.github.io/color-box/functions/mix.html"
         >
           mix
@@ -41,7 +41,7 @@ function MixColors() {
       <p className="mx-auto mb-4  w-full text-sm text-zinc-500 dark:text-zinc-400">
         The mix function is an implementation of the mixing algorithm from{" "}
         <a
-          className="text-teal-600 underline underline-offset-2 hover:text-teal-800 dark:text-teal-400 dark:hover:text-teal-300"
+          className="text-teal-700 underline underline-offset-2 hover:text-teal-900 dark:text-teal-400 dark:hover:text-teal-300"
           href="https://sass-lang.com/documentation/modules/color#mix"
         >
           Sass
