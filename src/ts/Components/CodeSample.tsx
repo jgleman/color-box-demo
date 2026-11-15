@@ -20,7 +20,11 @@ function CodeSample({ code }: CodeSampleProps) {
   return (
     <div className="relative mx-auto rounded-xl bg-[#272822] px-5 py-6 text-[#f8f8f2]">
       <pre className="overflow-x-auto">
-        <code ref={codeRef} className="language-js" style={{ whiteSpace: "pre-wrap" }} />
+        <code
+          ref={codeRef}
+          className="language-js"
+          style={{ whiteSpace: "pre-wrap" }}
+        />
       </pre>
       <span className="absolute bottom-1 right-1 h-5 w-5 rounded">
         <CopyToClipboard label="code sample" value={code} />

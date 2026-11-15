@@ -13,7 +13,7 @@ function CopyToClipboard({ value, label }: CopyToClipboardProps) {
       },
       function (e) {
         console.log({ e });
-      }
+      },
     );
   }
 

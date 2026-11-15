@@ -1,11 +1,12 @@
 @import "tailwindcss";
 
 @theme {
-  --font-family-sans: -apple-system, BlinkMacSystemFont, "avenir next", avenir,
-    "segoe ui", "helvetica neue", helvetica, Cantarell, Ubuntu, roboto, noto,
-    arial, sans-serif;
-  --font-family-mono: Menlo, Consolas, Monaco, "Liberation Mono",
-    "Lucida Console", monospace;
+  --font-sans:
+    -apple-system, BlinkMacSystemFont, "avenir next", avenir, "segoe ui",
+    "helvetica neue", helvetica, Cantarell, Ubuntu, roboto, noto, arial,
+    sans-serif;
+  --font-mono:
+    Menlo, Consolas, Monaco, "Liberation Mono", "Lucida Console", monospace;
 }
 
 ::-webkit-color-swatch-wrapper {

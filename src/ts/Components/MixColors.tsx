@@ -12,12 +12,10 @@ function MixColors() {
   const colorA = new Color(colorInputA);
   const colorB = new Color(colorInputB);
 
-  let contrastRatio = "";
-  try {
-    contrastRatio = contrast(colorA, colorB);
-  } catch (e) {
-    // probably an invalid color.
-  }
+  const contrastRatio =
+    isColorValid(colorA) && isColorValid(colorB)
+      ? contrast(colorA, colorB)
+      : "";
 
   const [mixWeight, setMixWeight] = useState(50);
 
@@ -52,7 +50,10 @@ function MixColors() {
       </p>
       <div className="mb-6 flex flex-col items-center justify-between sm:flex-row">
         <div className="mb-2 flex w-52 flex-col items-center justify-between">
-          <label htmlFor="color1" className="text-md uppercase text-zinc-700 dark:text-zinc-300">
+          <label
+            htmlFor="color1"
+            className="text-md uppercase text-zinc-700 dark:text-zinc-300"
+          >
             Color 1
           </label>
           <input
@@ -87,7 +88,10 @@ function MixColors() {
           <ColorSwatch color={colorMix} />
         </div>
         <div className="mb-2 flex w-52 flex-col items-center justify-between">
-          <label htmlFor="color2" className="text-md uppercase text-zinc-700 dark:text-zinc-300">
+          <label
+            htmlFor="color2"
+            className="text-md uppercase text-zinc-700 dark:text-zinc-300"
+          >
             Color 2
           </label>
           <input

@@ -9,7 +9,9 @@ interface ColorSwatchProps {
 function ColorSwatch({ color, label = "" }: ColorSwatchProps) {
   return (
     <div className="w-52">
-      {label ? <p className="m-2 font-bold leading-none dark:text-zinc-200">{label}</p> : null}
+      {label ? (
+        <p className="m-2 font-bold leading-none dark:text-zinc-200">{label}</p>
+      ) : null}
       <div className="mb-2 w-full overflow-hidden rounded-lg border border-zinc-200 dark:border-zinc-600">
         <div className="dark:bg-zinc-900">
           <div

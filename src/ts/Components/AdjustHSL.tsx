@@ -1,4 +1,4 @@
-import { useState, useMemo, useEffect } from "react";
+import { useState, useMemo } from "react";
 import {
   Color,
   getHue,
@@ -13,6 +13,16 @@ import {
 import CodeSample from "@components/CodeSample";
 import ColorSwatch from "@components/ColorSwatch";
 
+/** Slider values for a color: hue in degrees, saturation and lightness as 0-100. */
+function hslSliders(color: Color): { h: number; s: number; l: number } {
+  if (!isColorValid(color)) return { h: 0, s: 0, l: 0 };
+  return {
+    h: getHue(color) || 0,
+    s: Math.round(getSaturation(color) * 100 || 0),
+    l: Math.round(getLightness(color) * 100 || 0),
+  };
+}
+
 function AdjustHSL() {
   const [color, setColor] = useState("#00ff00");
 
@@ -20,31 +30,20 @@ function AdjustHSL() {
     return new Color(color);
   }, [color]);
 
-  const tSat = isColorValid(colorC) ? getSaturation(colorC) * 100 : 0;
-  const tHue = isColorValid(colorC) ? getHue(colorC) : 0;
-  const tLit = isColorValid(colorC) ? getLightness(colorC) : 0;
-  const [h, setH] = useState(tHue);
-  const [s, setS] = useState<number>(tSat);
-  const [l, setL] = useState<number>(tLit);
+  const [initial] = useState(() => hslSliders(colorC));
+  const [h, setH] = useState(initial.h);
+  const [s, setS] = useState(initial.s);
+  const [l, setL] = useState(initial.l);
 
+  // Sync the sliders here rather than in an effect, so typing a color doesn't
+  // trigger a second render.
   function setColorC(val: string): void {
     setColor(val);
+    const sliders = hslSliders(new Color(val));
+    setH(sliders.h);
+    setS(sliders.s);
+    setL(sliders.l);
   }
-
-  useEffect(() => {
-    if (isColorValid(colorC)) {
-      const sat = getSaturation(colorC) * 100 || 0;
-      const hue = getHue(colorC) || 0;
-      const lit = getLightness(colorC) * 100 || 0;
-      setS(Math.round(sat));
-      setH(hue);
-      setL(Math.round(lit));
-    } else {
-      setS(0);
-      setH(0);
-      setL(0);
-    }
-  }, [colorC]);
 
   const calculatedColor = isColorValid(colorC)
     ? setLightness(setSaturation(setHue(colorC, h), s), l)
@@ -78,7 +77,10 @@ function AdjustHSL() {
         </div>
         <div className="mb-2 flex w-52 flex-col items-center justify-between">
           <div className="w-full">
-            <label htmlFor="hue" className="text-md uppercase text-zinc-700 dark:text-zinc-300">
+            <label
+              htmlFor="hue"
+              className="text-md uppercase text-zinc-700 dark:text-zinc-300"
+            >
               Hue{" "}
               <span className="inline-block w-4 text-sm opacity-80">({h})</span>
             </label>
@@ -94,7 +96,10 @@ function AdjustHSL() {
             />
           </div>
           <div className="w-full">
-            <label htmlFor="sat" className="text-md uppercase text-zinc-700 dark:text-zinc-300">
+            <label
+              htmlFor="sat"
+              className="text-md uppercase text-zinc-700 dark:text-zinc-300"
+            >
               Saturation{" "}
               <span className="inline-block w-4 text-sm opacity-80">({s})</span>
             </label>
@@ -110,7 +115,10 @@ function AdjustHSL() {
             />
           </div>
           <div className="w-full">
-            <label htmlFor="lit" className="text-md uppercase text-zinc-700 dark:text-zinc-300">
+            <label
+              htmlFor="lit"
+              className="text-md uppercase text-zinc-700 dark:text-zinc-300"
+            >
               Lightness{" "}
               <span className="inline-block w-4 text-sm opacity-80">({l})</span>
             </label>

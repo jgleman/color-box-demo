@@ -24,7 +24,10 @@ function LightenDarken() {
           </p>
         </div>
         <div className="mx-auto flex w-52 flex-none flex-col justify-center gap-2">
-          <label htmlFor="ldcolor" className="text-md uppercase text-zinc-700 dark:text-zinc-300">
+          <label
+            htmlFor="ldcolor"
+            className="text-md uppercase text-zinc-700 dark:text-zinc-300"
+          >
             Color
           </label>
           <input

@@ -1,4 +1,4 @@
-import { useState, useMemo, useEffect } from "react";
+import { useState, useMemo } from "react";
 import {
   Color,
   setRgb,
@@ -19,13 +19,16 @@ function SetRgb() {
 
   const baseColor = useMemo(() => new Color(color), [color]);
 
-  useEffect(() => {
-    if (isColorValid(baseColor)) {
-      setR(getRed(baseColor));
-      setG(getGreen(baseColor));
-      setB(getBlue(baseColor));
-    }
-  }, [baseColor]);
+  // Sync the sliders here rather than in an effect, so typing a color doesn't
+  // trigger a second render.
+  function updateColor(value: string): void {
+    setColor(value);
+    const next = new Color(value);
+    if (!isColorValid(next)) return;
+    setR(getRed(next));
+    setG(getGreen(next));
+    setB(getBlue(next));
+  }
 
   const resultColor = useMemo(() => {
     if (!isColorValid(baseColor)) return new Color("");
@@ -41,7 +44,10 @@ function SetRgb() {
       </p>
       <div className="mb-6 flex flex-col items-center justify-between sm:flex-row">
         <div className="mb-4 w-full sm:mb-0 sm:w-52">
-          <label htmlFor="rgbcolor" className="text-md uppercase text-zinc-700 dark:text-zinc-300">
+          <label
+            htmlFor="rgbcolor"
+            className="text-md uppercase text-zinc-700 dark:text-zinc-300"
+          >
             Color
           </label>
           <input
@@ -49,13 +55,15 @@ function SetRgb() {
             name="rgbcolor"
             className="mb-2 w-full rounded border px-2 py-1.5 shadow-inner dark:border-zinc-600 dark:bg-zinc-700 dark:text-zinc-200"
             value={color}
-            onChange={(e) => setColor(e.target.value)}
+            onChange={(e) => updateColor(e.target.value)}
           />
         </div>
         <div className="mb-2 flex w-52 flex-col justify-between">
-          <label htmlFor="r" className="text-md uppercase text-zinc-700 dark:text-zinc-300">
-            Red{" "}
-            <span className="inline-block text-sm opacity-80">({r})</span>
+          <label
+            htmlFor="r"
+            className="text-md uppercase text-zinc-700 dark:text-zinc-300"
+          >
+            Red <span className="inline-block text-sm opacity-80">({r})</span>
           </label>
           <input
             className="mb-2 w-full accent-red-500"
@@ -67,9 +75,11 @@ function SetRgb() {
             max="255"
             onChange={(e) => setR(parseInt(e.target.value, 10))}
           />
-          <label htmlFor="g" className="text-md uppercase text-zinc-700 dark:text-zinc-300">
-            Green{" "}
-            <span className="inline-block text-sm opacity-80">({g})</span>
+          <label
+            htmlFor="g"
+            className="text-md uppercase text-zinc-700 dark:text-zinc-300"
+          >
+            Green <span className="inline-block text-sm opacity-80">({g})</span>
           </label>
           <input
             className="mb-2 w-full accent-green-500"
@@ -81,9 +91,11 @@ function SetRgb() {
             max="255"
             onChange={(e) => setG(parseInt(e.target.value, 10))}
           />
-          <label htmlFor="b" className="text-md uppercase text-zinc-700 dark:text-zinc-300">
-            Blue{" "}
-            <span className="inline-block text-sm opacity-80">({b})</span>
+          <label
+            htmlFor="b"
+            className="text-md uppercase text-zinc-700 dark:text-zinc-300"
+          >
+            Blue <span className="inline-block text-sm opacity-80">({b})</span>
           </label>
           <input
             className="mb-2 w-full accent-blue-500"
