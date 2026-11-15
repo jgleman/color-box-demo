@@ -1,6 +1,6 @@
 // const [alphaP, setAlphaP] = useState(100);
 
-import { useState, useMemo, useEffect } from "react";
+import { useState, useMemo } from "react";
 import {
   Color,
   hexString,
@@ -12,10 +12,23 @@ import {
 
 import CodeSample from "@components/CodeSample";
 
+function alphaPercent(color: Color): number {
+  if (!isColorValid(color)) return 100;
+  const alpha = getAlpha(color);
+  return typeof alpha === "undefined" ? 100 : alpha * 100;
+}
+
 function AdjustAlpha() {
   const [backgroundColor, setBackgroundColor] = useState("#2dd4bf");
   const [textColor, setTextColor] = useState("#000000");
-  const [a, setA] = useState(100);
+  const [a, setA] = useState(() => alphaPercent(new Color(textColor)));
+
+  // Sync the slider here rather than in an effect, so typing a color doesn't
+  // trigger a second render.
+  function updateTextColor(value: string): void {
+    setTextColor(value);
+    setA(alphaPercent(new Color(value)));
+  }
 
   const bgColor = useMemo(() => {
     return new Color(backgroundColor);
@@ -24,16 +37,6 @@ function AdjustAlpha() {
   const txtColor = useMemo(() => {
     return new Color(textColor);
   }, [textColor]);
-
-  useEffect(() => {
-    if (isColorValid(txtColor)) {
-      const alpha = getAlpha(txtColor);
-      const a = typeof alpha === "undefined" ? 100 : alpha * 100;
-      setA(a);
-    } else {
-      setA(100);
-    }
-  }, [txtColor]);
 
   const codeSample = `const color = new Color("${textColor}");\nconst newColor = setAlpha(color, ${a}));`;
 
@@ -44,7 +47,10 @@ function AdjustAlpha() {
       </p>
       <div className="flex flex-row justify-between gap-4 max-[440px]:flex-col">
         <div className="mx-auto w-52 flex-none">
-          <label htmlFor="txtcolor" className="text-md uppercase text-zinc-700 dark:text-zinc-300">
+          <label
+            htmlFor="txtcolor"
+            className="text-md uppercase text-zinc-700 dark:text-zinc-300"
+          >
             Text Color
           </label>
           <input
@@ -52,9 +58,12 @@ function AdjustAlpha() {
             name="txtcolor"
             className="mb-2 w-full rounded border px-2 py-1.5 shadow-inner dark:border-zinc-600 dark:bg-zinc-700 dark:text-zinc-200"
             value={textColor}
-            onChange={(e) => setTextColor(e.target.value)}
+            onChange={(e) => updateTextColor(e.target.value)}
           />
-          <label htmlFor="bgcolor" className="text-md uppercase text-zinc-700 dark:text-zinc-300">
+          <label
+            htmlFor="bgcolor"
+            className="text-md uppercase text-zinc-700 dark:text-zinc-300"
+          >
             Background Color
           </label>
           <input
@@ -93,7 +102,10 @@ function AdjustAlpha() {
             </div>
           )}
           <div className="flex w-52 flex-col items-center justify-center">
-            <label htmlFor="alpha" className="text-md uppercase text-zinc-700 dark:text-zinc-300">
+            <label
+              htmlFor="alpha"
+              className="text-md uppercase text-zinc-700 dark:text-zinc-300"
+            >
               Alpha
             </label>
             <input

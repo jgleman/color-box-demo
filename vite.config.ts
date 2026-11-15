@@ -6,8 +6,8 @@ import react from "@vitejs/plugin-react";
 const colorBoxVersion: string = JSON.parse(
   readFileSync(
     path.resolve(__dirname, "node_modules/@jgleman/color-box/package.json"),
-    "utf-8"
-  )
+    "utf-8",
+  ),
 ).version;
 
 // https://vitejs.dev/config/
